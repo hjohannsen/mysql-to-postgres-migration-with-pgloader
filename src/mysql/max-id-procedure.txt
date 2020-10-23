@@ -1,0 +1,47 @@
+DELIMITER $$
+
+CREATE PROCEDURE acrolinxMaxId (
+	OUT maxId BIGINT(20)
+)
+BEGIN
+	DECLARE finished INTEGER DEFAULT 0;
+	DECLARE lastMax BIGINT(20) DEFAULT 0;
+	DECLARE curMax BIGINT(20) DEFAULT 0;
+	DECLARE currentTable varchar(100) DEFAULT "";
+	DECLARE queryText varchar(1000) DEFAULT "";
+
+	DEClARE curse
+		CURSOR FOR
+		    SELECT DISTINCT t.table_name FROM information_schema.TABLES t
+                                          JOIN information_schema.COLUMNS c on t.table_name = c.table_name
+                               WHERE t.TABLE_SCHEMA = DATABASE()
+                               AND t.table_rows IS NOT NULL
+                               AND t.table_rows > 0
+                               AND c.column_name = 'id';
+
+	DECLARE CONTINUE HANDLER
+        FOR NOT FOUND SET finished = 1;
+
+	OPEN curse;
+
+    SET @lastMax = -1;
+	getMaxId: LOOP
+		FETCH curse INTO currentTable;
+		IF finished = 1 THEN
+			LEAVE getMaxId;
+		END IF;
+
+        SET @queryText = CONCAT("select max(id) FROM ", currentTable, " into @curMax");
+        PREPARE query FROM @queryText;
+        EXECUTE query;
+        SELECT GREATEST(@lastMax, @curMax) INTO @lastMax;
+
+
+	END LOOP getMaxId;
+	CLOSE curse;
+
+	SELECT @lastMax into maxId;
+
+END$$
+
+DELIMITER ;
