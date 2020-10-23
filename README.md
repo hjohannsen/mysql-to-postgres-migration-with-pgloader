@@ -29,7 +29,7 @@ You might also need the [mysql][mysql-dev-docs-getting-started] client.
 
 #### From Template
 
-This project contains a PGLoader configuration template at `src/templates/cfg.load`.
+This project contains a PGLoader configuration template [cfg.load][src-cfg-template].
 
 That template has the following placeholders, which can _mostly_ be passed as [environment variables or per INI file][pgloader-github-templating] (:warning: except one):
 * `ACROLINX_MYSQL_PG__SRC_USER`: MySQL user
@@ -66,7 +66,7 @@ Inspiration is always welcome.)
 The `cfg.load` configuration sets the sequence to the value specified in `ACROLINX_MYSQL_PG__MAX_SEQ` after importing the data.
 
 But what value should be entered in the first place? 
-To find the maximum PK in the source database, we added a procedure: `src/mysql/max-id-procedure.txt`:
+To find the maximum PK in the source database, we added a procedure [max-id-procedure.txt][src-max-id-procedure]:
 * Connect to the source database with the [mysql][mysql-dev-docs-getting-started] client.
 * `source src/mysql/max-id-procedure.txt`
 * `CALL acrolinxMaxId(@max_id_in_database);`
@@ -135,4 +135,5 @@ Links
 [pgloader-github-installation]: https://github.com/dimitri/pgloader#install
 [pgloader-github-templating]: https://pgloader.readthedocs.io/en/latest/pgloader.html?highlight=ini#templating-with-mustache
 [postgres-docs-resource-consumption]: https://www.postgresql.org/docs/10/runtime-config-resource.html
-
+[src-cfg-template]: https://github.com/acrolinx/mysql-to-postgres-migration-with-pgloader/blob/main/src/templates/cfg.load
+[src-max-id-procedure]: https://github.com/acrolinx/mysql-to-postgres-migration-with-pgloader/blob/main/src/mysql/max-id-procedure.txt
