@@ -98,7 +98,7 @@ Assuming you created a PGLoader configuration `cfg.load` as described above, run
 #### Full Flow
 Here's the full procedure:
 * Install PGLoader and the MySQL client.
-* Clone this repository.
+* Clone this repository:
 * CD into the root folder.
 * Find out highest MySQL PK as described above.
 * Generate the configuration from template as described above.
