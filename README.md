@@ -1,4 +1,4 @@
-Migrating an Acrolinx Reporting Database from MySQL to Postgres with PGLoader
+Migrating a Reporting Database from MySQL to Postgres with PGLoader
 ================================================================================
 
 The [Acrolinx Platform's][acrolinx] [backup/restore mechanism][acrolinx-docs-reporting-backups] for the reporting database is designed to work with _all_ supported database servers. In all directions.
@@ -117,8 +117,8 @@ Links
 ------
 * [Acrolinx]: Official Acrolinx website.
 * [Connect to External Analytics Databases][acrolinx-docs-connect-external-dbs]: Info about the external databases needed by the Acrolinx Platform.
-* [Analytics and Reporting Database Backups][acrolinx-docs-reporting-backups]: How to back up and restore an Acrolinx reporting database with the Acrolinx Platform tools.
-* [Managing Terminology Database Backups][acrolinx-docs-terminology-backups]: How to back up and restore the Acrolinx terminology database.
+* [Analytics and Reporting Database Backups][acrolinx-docs-reporting-backups]: How to back up and restore a reporting database with the Acrolinx Platform tools.
+* [Managing Terminology Database Backups][acrolinx-docs-terminology-backups]: How to back up and restore the terminology database.
 * [Product Sunset Policy][acrolinx-docs-sunset-policy]: Acrolinx product sunset policy specifying the demise of MySQL support.
 * [Custom Dashboards][acrolinx-docs-custom-analytics-dashboards]: How to create custom analytics reports for the Acrolinx Platform.
 * [PGLoader on GitHub][pgloader-github]: PGLoader repository on GitHub.
